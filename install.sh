@@ -287,7 +287,7 @@ S5_USERNAME="user$RANDOM_NUM"
 S5_PASSWORD="pwd$RANDOM_NUM"
 
 # Updating the tasks.json with the new username and password
-sed -i "s/\("S5User":"\).*\(",\)"/\1$S5_USERNAME:$S5_PASSWORD\2/" nps-socks5-master/conf/tasks.json
+sed -i "s/\("S5User":"\).*\(",\)"/\1$S5_USERNAME:$S5_PASSWORD\2/" nps-socks5/conf/tasks.json
 
 # Displaying the new SOCKS5 credentials
 echo "Generated SOCKS5 Credentials:"
