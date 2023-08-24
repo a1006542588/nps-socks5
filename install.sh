@@ -280,7 +280,21 @@ if [[ $menuChoice == 1 ]];then
 	echo "--后台管理地址"${ipAdd}":"${webPort}
 	echo "--登录账号admin"
 	echo "--登录密码admin"
-	echo "默认socks5账号信息:账号socks5 密码socks5 端口5555"
+	
+# Generating random SOCKS5 username and password
+RANDOM_NUM=$RANDOM
+S5_USERNAME="user$RANDOM_NUM"
+S5_PASSWORD="pwd$RANDOM_NUM"
+
+# Updating the tasks.json with the new username and password
+sed -i "s/\("S5User":"\).*\(",\)"/\1$S5_USERNAME:$S5_PASSWORD\2/" nps-socks5-master/conf/tasks.json
+
+# Displaying the new SOCKS5 credentials
+echo "Generated SOCKS5 Credentials:"
+echo "Username: $S5_USERNAME"
+echo "Password: $S5_PASSWORD"
+
+echo "默认socks5账号信息:账号socks5 密码socks5 端口5555"
 	echo "如需修改后台管理端口以及账号密码请看github"
 
 fi
@@ -320,4 +334,3 @@ allUninstall
 fi
 }
 menu
-
